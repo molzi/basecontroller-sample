@@ -170,12 +170,6 @@ sap.ui.define([
 
 		onNavBack: function () {
 			let oPreviousHash = History.getInstance().getPreviousHash();
-			let sCustomerId = this.getOwnerComponent().getCustomerId();
-
-			if (sCustomerId) {
-				this.getOwnerComponent().setCustomerId(undefined);
-				window.history.go(-1);
-			}
 
 			if (oPreviousHash !== undefined) {
 				window.history.go(-1);
