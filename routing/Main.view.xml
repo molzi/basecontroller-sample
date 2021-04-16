@@ -1,0 +1,149 @@
+<mvc:View xmlns:table="sap.ui.table"
+    controllerName="sap.training.odata.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    busyIndicatorDelay="0"
+>
+    <Page id="page" title="{i18n>title}">
+					<content>
+                        <table:Table rows="{/UX_C_Flight_TP}" rowSelectionChange="onFlightChange"
+                         selectionBehavior="Row" selectionMode="Single" title="Flights" visibleRowCount="7">
+                            <table:columns>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Carrier"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Carrid}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Flight number"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Connid}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Flight Date"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{path: 'Fldate', type: 'sap.ui.model.type.Date'}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Number of Seats"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Seatsmax}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Number of occupied seats"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Seatsocc}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column>
+                                    <table:label>
+                                        <Label text="Action"/>
+                                    </table:label>
+                                    <table:template>
+                                        <core:Icon tooltip="Create Booking" src="sap-icon://create" press="onCreateBooking">
+                                            <core:customData>
+                                                <core:CustomData key="Carrid" value="{Carrid}"/>
+                                                <core:CustomData key="Connid" value="{Connid}"/>
+                                                <core:CustomData key="Fldate" value="{Fldate}"/>
+                                            </core:customData>
+                                        </core:Icon>
+                                    </table:template>
+                                </table:Column>
+                            </table:columns>
+                        </table:Table>
+
+
+                        <!-- Booking table -->
+                        <table:Table id="idBookingTable" rows="{to_Booking}"
+                         selectionBehavior="Row" selectionMode="Single" title="Bookings" visibleRowCount="10">
+                            <table:columns>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Carrier"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Carrid}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Connection-ID"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Connid}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Flight Date"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{path: 'Fldate', type: 'sap.ui.model.type.Date'}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Booking ID"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Bookid}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Passenger Name"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Passname}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Booking Date"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{path: 'OrderDate', type: 'sap.ui.model.type.Date'}"/>
+                                    </table:template>
+                                </table:Column>
+                                <table:Column >
+                                    <table:label>
+                                        <Label text="Cancelled"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <Text text="{Cancelled}"/>
+                                    </table:template>
+                                </table:Column>
+                                 <table:Column >
+                                    <table:label>
+                                        <Label text="Action"></Label>
+                                    </table:label>
+                                    <table:template>
+                                        <core:Icon tooltip="Cancel Booking" src="sap-icon://sys-cancel" press="onCancelBooking">
+                                            <core:customData>
+                                                <core:CustomData key="Carrid" value="{Carrid}"/>
+                                                <core:CustomData key="Bookid" value="{Bookid}"/>
+                                            </core:customData>
+                                        </core:Icon>
+                                    </table:template>
+                                </table:Column>
+                            </table:columns>
+                        </table:Table>
+                    </content>
+				</Page>
+</mvc:View>
